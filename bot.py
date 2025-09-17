@@ -1,11 +1,9 @@
 import random
 import telebot
 
-# Вставь сюда токен своего бота
 TOKEN = '7979214497:AAEg4DSGIMLFg00jA3P9Kwk5962MeRnKuGo'
 bot = telebot.TeleBot(TOKEN)
 
-# Большой список цитат
 quotes = [
     "«Будь собой, остальные роли уже заняты.» — Оскар Уайльд",
     "«Жизнь — это то, что с тобой происходит, пока ты строишь планы.» — Джон Леннон",
@@ -72,16 +70,14 @@ quotes = [
     "Бейбарыс лох"
 ]
 
-# Обработка команды /start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     bot.reply_to(message, "Привет! Напиши /quote, чтобы получить случайную цитату.")
 
-# Обработка команды /quote
 @bot.message_handler(commands=['quote'])
 def send_quote(message):
     quote = random.choice(quotes)
     bot.send_message(message.chat.id, quote)
 
-# Запуск бота
+
 bot.polling()
